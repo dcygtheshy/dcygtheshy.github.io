@@ -1,0 +1,68 @@
+---
+import MainGridLayout from "../layouts/MainGridLayout.astro";
+---
+
+<MainGridLayout
+	title="Research"
+	description="Projects, research themes, and bilingual notes."
+>
+	<section class="card-base overflow-hidden rounded-[var(--radius-large)] px-8 py-7">
+		<div class="mb-6">
+			<p class="text-sm font-semibold uppercase text-[var(--primary)]">
+				保研回忆 / Research
+			</p>
+			<h1
+				class="mt-2 text-3xl font-bold text-neutral-900 transition dark:text-neutral-50"
+			>
+				把经历整理成可复用的笔记
+			</h1>
+			<p class="mt-3 text-neutral-500 transition dark:text-neutral-400">
+				这里放保研经历、项目方向和后续研究线索。它不是流水账，而是给未来
+				的自己和合作对象看的路线图。
+			</p>
+		</div>
+
+		<div class="grid gap-4 md:grid-cols-2">
+			<article
+				class="rounded-xl border border-black/10 p-5 transition dark:border-white/10"
+			>
+				<h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-50">
+					保研回忆
+				</h2>
+				<p class="mt-2 text-neutral-500 dark:text-neutral-400">
+					从夏令营、预推免到最终选择，记录那些影响人生方向的节点。
+				</p>
+			</article>
+			<article
+				class="rounded-xl border border-black/10 p-5 transition dark:border-white/10"
+			>
+				<h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-50">
+					项目与实践
+				</h2>
+				<p class="mt-2 text-neutral-500 dark:text-neutral-400">
+					智居云枢、影随飞，以及其他把想法做成系统的小项目。
+				</p>
+			</article>
+			<article
+				class="rounded-xl border border-black/10 p-5 transition dark:border-white/10"
+			>
+				<h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-50">
+					研究方向
+				</h2>
+				<p class="mt-2 text-neutral-500 dark:text-neutral-400">
+					AI 系统、内容真实性、MCP、RAG、可信生成与工程化流程。
+				</p>
+			</article>
+			<article
+				class="rounded-xl border border-black/10 p-5 transition dark:border-white/10"
+			>
+				<h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-50">
+					公开笔记
+				</h2>
+				<p class="mt-2 text-neutral-500 dark:text-neutral-400">
+					中英双语记录论文阅读、技术理解和长期思考。
+				</p>
+			</article>
+		</div>
+	</section>
+</MainGridLayout>
