@@ -286,6 +286,62 @@ function loadHue() {
 	setHue(getHue())
 }
 
+function initRandomBanner() {
+	const bannerMeta = document.getElementById('banner-random-srcs');
+	if (!bannerMeta) return;
+
+	let srcs: string[] = [];
+	try {
+		const raw = bannerMeta.getAttribute('data-srcs') || '[]';
+		const parsed = JSON.parse(raw);
+		if (Array.isArray(parsed)) {
+			srcs = parsed.filter((item) => typeof item === 'string' && item.trim().length > 0);
+		}
+	} catch (error) {
+		console.error('Failed to parse banner src list:', error);
+		return;
+	}
+
+	if (srcs.length === 0) return;
+
+	const bannerImage = document.getElementById('banner-image');
+	if (!(bannerImage instanceof HTMLImageElement)) return;
+
+	const nextSrc = srcs[Math.floor(Math.random() * srcs.length)];
+	if (!nextSrc) return;
+
+	bannerImage.removeAttribute('srcset');
+	bannerImage.removeAttribute('sizes');
+	bannerImage.src = nextSrc;
+}
+
+function initAboutLanguageSwitcher() {
+	const wrapper = document.querySelector('[data-about-switcher]');
+	if (!wrapper) return;
+
+	const storageKey = "about-lang";
+	const zhPanel = document.getElementById("about-zh");
+	const enPanel = document.getElementById("about-en");
+	const zhBtn = document.getElementById("about-zh-btn");
+	const enBtn = document.getElementById("about-en-btn");
+	if (!zhPanel || !enPanel || !zhBtn || !enBtn) return;
+
+	const setAboutLanguage = (lang: string) => {
+		const isZh = lang !== "en";
+		zhPanel.classList.toggle("hidden", !isZh);
+		enPanel.classList.toggle("hidden", isZh);
+		zhBtn.dataset.active = String(isZh);
+		enBtn.dataset.active = String(!isZh);
+		zhBtn.setAttribute("aria-selected", String(isZh));
+		enBtn.setAttribute("aria-selected", String(!isZh));
+		localStorage.setItem(storageKey, isZh ? "zh" : "en");
+	};
+
+	zhBtn.onclick = () => setAboutLanguage("zh");
+	enBtn.onclick = () => setAboutLanguage("en");
+	setAboutLanguage(localStorage.getItem(storageKey) || "zh");
+}
+
 function initCustomScrollbar() {
 	const bodyElement = document.querySelector('body');
 	if (!bodyElement) return;
@@ -367,6 +423,8 @@ function init() {
 	// disableAnimation()()		// TODO
 	loadTheme();
 	loadHue();
+	initRandomBanner();
+	initAboutLanguageSwitcher();
 	initCustomScrollbar();
 	showBanner();
 }

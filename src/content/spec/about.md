@@ -1,28 +1,16 @@
-# About / 关于
+# About
 
-你好，我是 **朱昊**，西南大学计算机与信息科学学院软件学院本科生，软件工程（中外合作办学）方向。
+你好，我是 **朱昊**。本科阶段快结束了，接下来会去北京电子科技学院继续读研。
 
-Hi, I am **朱昊**, an undergraduate in Software Engineering at the School of Computer and Information Science, Southwest University.
+我把这个站当成自己的长期笔记本，主要放保研经历、项目记录、读书内容和一些更私人的思考。
 
-## Quick Facts
+## 简短信息
 
-- GPA: 4.1 / 5.0
-- Rank: 8 / 127
-- IELTS: 6.5
-- Interests: AI systems, content authenticity, research workflows, and practical engineering.
+- 本科：西南大学软件工程
+- 现在：北京电子科技学院研零
+- 兴趣：AI 系统、内容真实性、MCP / RAG、工程化流程
 
-## What I Do
-
-- 写论文阅读、保研记录和工程笔记。
-- Build small systems around RAG, MCP, intelligent devices, and automation.
-- Keep a bilingual record of learning, interviews, and choices.
-
-## Projects
-
-- 智居云枢：基于 RAG + MCP 的多模态智能家居系统。
-- 影随飞：姿态驱动的无人机控制及目标追随系统。
-
-## Contact
+## 联系
 
 - GitHub: [dcygtheshy](https://github.com/dcygtheshy)
 - Email: [1633960501@qq.com](mailto:1633960501@qq.com)

@@ -4,65 +4,37 @@ import MainGridLayout from "../layouts/MainGridLayout.astro";
 
 <MainGridLayout
 	title="Research"
-	description="Projects, research themes, and bilingual notes."
+	description="Current directions, draft topics, and places where formal outputs will be added later."
 >
-	<section class="card-base overflow-hidden rounded-[var(--radius-large)] px-8 py-7">
-		<div class="mb-6">
-			<p class="text-sm font-semibold uppercase text-[var(--primary)]">
-				保研回忆 / Research
-			</p>
-			<h1
-				class="mt-2 text-3xl font-bold text-neutral-900 transition dark:text-neutral-50"
-			>
-				把经历整理成可复用的笔记
-			</h1>
-			<p class="mt-3 text-neutral-500 transition dark:text-neutral-400">
-				这里放保研经历、项目方向和后续研究线索。它不是流水账，而是给未来
-				的自己和合作对象看的路线图。
+	<section class="space-y-6">
+		<div>
+			<p class="text-sm font-semibold uppercase text-[var(--primary)]">Research</p>
+			<h1 class="mt-2 text-3xl font-bold text-neutral-900 transition dark:text-neutral-50">先放两个方向，占位但不装成熟</h1>
+			<p class="mt-3 max-w-3xl text-neutral-500 transition dark:text-neutral-400">
+				我现在还没有正式的学术成果，所以这里先不摆一张很大的介绍卡。先放两个以后会持续补内容的方向，方便自己也方便别人快速看懂我在想什么。
 			</p>
 		</div>
 
 		<div class="grid gap-4 md:grid-cols-2">
-			<article
-				class="rounded-xl border border-black/10 p-5 transition dark:border-white/10"
-			>
-				<h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-50">
-					保研回忆
-				</h2>
+			<article class="rounded-xl border border-black/10 p-5 transition dark:border-white/10">
+				<div class="text-sm font-semibold text-[var(--primary)]">方向一</div>
+				<h2 class="mt-2 text-xl font-bold text-neutral-900 dark:text-neutral-50">AI 系统与内容真实性</h2>
 				<p class="mt-2 text-neutral-500 dark:text-neutral-400">
-					从夏令营、预推免到最终选择，记录那些影响人生方向的节点。
+					先整理成读书笔记、实验想法和工程记录，后面如果真的做出东西，再把结果补进来。
 				</p>
 			</article>
-			<article
-				class="rounded-xl border border-black/10 p-5 transition dark:border-white/10"
-			>
-				<h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-50">
-					项目与实践
-				</h2>
+
+			<article class="rounded-xl border border-black/10 p-5 transition dark:border-white/10">
+				<div class="text-sm font-semibold text-[var(--primary)]">方向二</div>
+				<h2 class="mt-2 text-xl font-bold text-neutral-900 dark:text-neutral-50">MCP / RAG / 工程化流程</h2>
 				<p class="mt-2 text-neutral-500 dark:text-neutral-400">
-					智居云枢、影随飞，以及其他把想法做成系统的小项目。
+					关注怎么把想法做成可维护的系统，也会顺手记录一些更偏研究生日常的尝试。
 				</p>
 			</article>
-			<article
-				class="rounded-xl border border-black/10 p-5 transition dark:border-white/10"
-			>
-				<h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-50">
-					研究方向
-				</h2>
-				<p class="mt-2 text-neutral-500 dark:text-neutral-400">
-					AI 系统、内容真实性、MCP、RAG、可信生成与工程化流程。
-				</p>
-			</article>
-			<article
-				class="rounded-xl border border-black/10 p-5 transition dark:border-white/10"
-			>
-				<h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-50">
-					公开笔记
-				</h2>
-				<p class="mt-2 text-neutral-500 dark:text-neutral-400">
-					中英双语记录论文阅读、技术理解和长期思考。
-				</p>
-			</article>
+		</div>
+
+		<div class="rounded-xl border border-dashed border-black/10 p-5 text-sm text-neutral-500 dark:border-white/10 dark:text-neutral-400">
+			正式成果出来之前，这里会继续保持朴素一点。等以后有论文、开源、实验结果，再替换成更完整的内容。
 		</div>
 	</section>
 </MainGridLayout>

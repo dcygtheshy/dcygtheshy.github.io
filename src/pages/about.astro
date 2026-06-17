@@ -1,25 +1,70 @@
 ---
-
-import { getEntry, render } from "astro:content";
-import Markdown from "@components/misc/Markdown.astro";
+import MainGridLayout from "../layouts/MainGridLayout.astro";
 import I18nKey from "../i18n/i18nKey";
 import { i18n } from "../i18n/translation";
-import MainGridLayout from "../layouts/MainGridLayout.astro";
-
-const aboutPost = await getEntry("spec", "about");
-
-if (!aboutPost) {
-	throw new Error("About page content not found");
-}
-
-const { Content } = await render(aboutPost);
 ---
-<MainGridLayout title={i18n(I18nKey.about)} description={i18n(I18nKey.about)}>
-    <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
-        <div class="card-base z-10 px-9 py-6 relative w-full ">
-            <Markdown class="mt-2">
-                <Content />
-            </Markdown>
-        </div>
-    </div>
+
+<MainGridLayout title={i18n(I18nKey.about)} description="朱昊的双语简介、联系方式和当前状态。">
+	<section data-about-switcher class="card-base overflow-hidden rounded-[var(--radius-large)] px-6 py-6 md:px-8 md:py-7">
+		<div class="flex flex-wrap items-center justify-between gap-3">
+			<div>
+				<p class="text-sm font-semibold uppercase text-[var(--primary)]">About</p>
+				<h1 class="mt-2 text-2xl font-bold text-neutral-900 dark:text-neutral-50">关于我</h1>
+			</div>
+			<div class="flex rounded-xl bg-black/5 p-1 dark:bg-white/10" role="tablist" aria-label="About language switch">
+				<button id="about-zh-btn" type="button" data-about-lang="zh" class="about-tab-btn rounded-lg px-3 py-2 text-sm font-semibold" aria-selected="true" data-active="true">中文</button>
+				<button id="about-en-btn" type="button" data-about-lang="en" class="about-tab-btn rounded-lg px-3 py-2 text-sm font-semibold" aria-selected="false" data-active="false">English</button>
+			</div>
+		</div>
+
+		<div class="mt-6 space-y-6">
+			<div id="about-zh" data-about-panel="zh" class="space-y-4">
+				<p>你好，我是朱昊。最近刚走完本科阶段，马上毕业，现在是北京电子科技学院研零。</p>
+				<p>我更喜欢把自己的经历写清楚一点，所以这里会放保研、项目、读书和一些真正有用的记录。内容可能不多，但会尽量真实、直接。</p>
+				<div class="grid gap-3 md:grid-cols-2">
+					<div class="rounded-xl border border-black/10 p-4 dark:border-white/10">
+						<div class="text-sm font-semibold text-[var(--primary)]">现在在做</div>
+						<p class="mt-2 text-neutral-600 dark:text-neutral-300">整理保研回忆贴，补项目笔记，顺手把网站继续写顺。</p>
+					</div>
+					<div class="rounded-xl border border-black/10 p-4 dark:border-white/10">
+						<div class="text-sm font-semibold text-[var(--primary)]">关注方向</div>
+						<p class="mt-2 text-neutral-600 dark:text-neutral-300">AI 系统、内容真实性、MCP/RAG、工程化流程。</p>
+					</div>
+				</div>
+				<div class="space-y-2">
+					<p class="text-sm font-semibold text-neutral-500">联系我</p>
+					<div class="flex flex-wrap gap-3 text-sm">
+						<a class="link-underline" href="https://github.com/dcygtheshy" target="_blank" rel="noopener">GitHub</a>
+						<a class="link-underline" href="mailto:1633960501@qq.com">Email</a>
+						<a class="link-underline" href="/rss.xml">RSS</a>
+					</div>
+				</div>
+			</div>
+
+			<div id="about-en" data-about-panel="en" class="space-y-4 hidden">
+				<p>Hi, I am Zhu Hao. I am finishing my undergraduate degree and will start graduate school at Beijing Electronic Science and Technology Institute.</p>
+				<p>This site is where I keep a clear record of things that matter to me: my grad-school application journey, small projects, notes, and the bits of life around them. I try to keep the writing honest and practical.</p>
+				<div class="grid gap-3 md:grid-cols-2">
+					<div class="rounded-xl border border-black/10 p-4 dark:border-white/10">
+						<div class="text-sm font-semibold text-[var(--primary)]">Now</div>
+						<p class="mt-2 text-neutral-600 dark:text-neutral-300">Wrapping up the bachelor's chapter and preparing for the next one.</p>
+					</div>
+					<div class="rounded-xl border border-black/10 p-4 dark:border-white/10">
+						<div class="text-sm font-semibold text-[var(--primary)]">Interests</div>
+						<p class="mt-2 text-neutral-600 dark:text-neutral-300">AI systems, content authenticity, MCP/RAG, and engineering workflows.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<style>
+		.about-tab-btn {
+			color: var(--tw-prose-body);
+		}
+		.about-tab-btn[data-active="true"] {
+			background: var(--primary);
+			color: white;
+		}
+	</style>
 </MainGridLayout>
