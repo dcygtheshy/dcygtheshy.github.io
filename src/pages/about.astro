@@ -2,9 +2,57 @@
 import MainGridLayout from "../layouts/MainGridLayout.astro";
 import I18nKey from "../i18n/i18nKey";
 import { i18n } from "../i18n/translation";
+
+const educationZh = [
+	{
+		logo: "/schools/swu-logo.png",
+		logoAlt: "西南大学校徽",
+		school: "西南大学",
+		schoolMeta: "双一流 / 211 工程",
+		details: [
+			["学院", "计算机与信息科学学院 软件学院"],
+			["专业", "软件工程（中外合作办学）"],
+			["时间", "2022 年 9 月 - 2026 年 6 月"],
+			["学习", "GPA 4.1 / 5.0，均分 88.228，IELTS 6.5"]
+		],
+	},
+	{
+		logo: "/schools/besti-logo.png",
+		logoAlt: "北京电子科技学院校徽",
+		school: "北京电子科技学院",
+		schoolMeta: "保研",
+		details: [
+			["时间", "2026 年 9 月 - 2029 年 6 月"],
+		],
+	},
+];
+
+const educationEn = [
+	{
+		logo: "/schools/swu-logo.png",
+		logoAlt: "Southwest University logo",
+		school: "Southwest University",
+		schoolMeta: "Double First-Class / Project 211",
+		details: [
+			["School", "Faculty of Computer and Information Science, School of Software"],
+			["Major", "Software Engineering (Chinese-Foreign Cooperation)"],
+			["Period", "September 2022 - June 2026"],
+			["Study", "GPA 4.1 / 5.0, average score 88.228, IELTS 6.5"],
+		],
+	},
+	{
+		logo: "/schools/besti-logo.png",
+		logoAlt: "Beijing Electronic Science and Technology Institute logo",
+		school: "Beijing Electronic Science and Technology Institute",
+		schoolMeta: "Recommended Graduate Admission",
+		details: [
+			["Period", "September 2026 - June 2029"],
+		],
+	},
+];
 ---
 
-<MainGridLayout title={i18n(I18nKey.about)} description="朱昊的双语简介、联系方式和当前状态。">
+<MainGridLayout title={i18n(I18nKey.about)} description="朱昊的个人简介、教育经历、研究方向、奖项、技能、兴趣爱好与联系方式。">
 	<section data-about-switcher class="card-base overflow-hidden rounded-[var(--radius-large)] px-6 py-6 md:px-8 md:py-7">
 		<div class="flex flex-wrap items-center justify-between gap-3">
 			<div>
@@ -18,42 +66,198 @@ import { i18n } from "../i18n/translation";
 		</div>
 
 		<div class="mt-6 space-y-6">
-			<div id="about-zh" data-about-panel="zh" class="space-y-4">
-				<p>你好，我是朱昊。最近刚走完本科阶段，马上毕业，现在是北京电子科技学院研零。</p>
-				<p>我更喜欢把自己的经历写清楚一点，所以这里会放保研、项目、读书和一些真正有用的记录。内容可能不多，但会尽量真实、直接。</p>
-				<div class="grid gap-3 md:grid-cols-2">
-					<div class="rounded-xl border border-black/10 p-4 dark:border-white/10">
-						<div class="text-sm font-semibold text-[var(--primary)]">现在在做</div>
-						<p class="mt-2 text-neutral-600 dark:text-neutral-300">整理保研回忆贴，补项目笔记，顺手把网站继续写顺。</p>
+			<div id="about-zh" data-about-panel="zh" class="space-y-6 leading-7 text-neutral-700 dark:text-neutral-300">
+				<section class="space-y-3">
+					<h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-50">姓名与简介</h2>
+					<p>
+						你好，我是蛋蛋鼠。
+					</p>
+				</section>
+
+				<section class="space-y-3 border-t border-black/10 pt-5 dark:border-white/10">
+					<h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-50">教育经历</h2>
+					<div class="space-y-4">
+						{educationZh.map((item) => (
+							<article class="grid gap-4 rounded-lg border border-black/10 bg-black/[0.015] p-4 dark:border-white/10 dark:bg-white/[0.03] md:grid-cols-[7rem_1fr] md:items-center">
+								<div class="flex aspect-square w-24 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-dashed border-black/15 bg-white/70 text-center text-sm font-semibold text-neutral-400 dark:border-white/15 dark:bg-white/10 dark:text-neutral-500 md:w-full">
+									{item.logo ? (
+										<img src={item.logo} alt={item.logoAlt} class="h-full w-full object-contain p-3" />
+									) : (
+										<span>校徽待补</span>
+									)}
+								</div>
+								<div class="min-w-0 space-y-3">
+									<div>
+										<h3 class="text-xl font-bold text-neutral-900 dark:text-neutral-50">{item.school}</h3>
+										<p class="text-sm font-medium text-[var(--primary)]">{item.schoolMeta}</p>
+									</div>
+									<dl class="grid gap-2 text-sm sm:grid-cols-2">
+										{item.details.map(([label, value]) => (
+											<div class="min-w-0 rounded-md bg-white/70 px-3 py-2 dark:bg-white/[0.06]">
+												<dt class="text-xs font-semibold text-neutral-500 dark:text-neutral-400">{label}</dt>
+												<dd class="mt-1 break-words text-neutral-800 dark:text-neutral-200">{value}</dd>
+											</div>
+										))}
+									</dl>
+								</div>
+							</article>
+						))}
 					</div>
-					<div class="rounded-xl border border-black/10 p-4 dark:border-white/10">
-						<div class="text-sm font-semibold text-[var(--primary)]">关注方向</div>
-						<p class="mt-2 text-neutral-600 dark:text-neutral-300">AI 系统、内容真实性、MCP/RAG、工程化流程。</p>
-					</div>
-				</div>
-				<div class="space-y-2">
-					<p class="text-sm font-semibold text-neutral-500">联系我</p>
+				</section>
+
+				<section class="space-y-3 border-t border-black/10 pt-5 dark:border-white/10">
+					<h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-50">研究方向</h2>
+					<ul class="list-disc space-y-2 pl-5">
+						<li>人工智能模型水印：关注模型版权保护、模型来源追踪和水印鲁棒性等问题。</li>
+						<li>模型主动授权控制：关注模型能力调用、权限管理和可控使用机制。</li>
+						<li>人工智能生产内容标识：关注 AIGC 内容标识、内容真实性和生成式 AI 的治理工具。</li>
+					</ul>
+				</section>
+
+				<section class="space-y-3 border-t border-black/10 pt-5 dark:border-white/10">
+					<h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-50">荣誉和获奖</h2>
+					<ul class="list-disc space-y-2 pl-5">
+						<li>第十七届中国大学生计算机设计大赛，国家级二等奖，项目主要负责人。</li>
+						<li>全国大学生数学建模竞赛，省级一等奖，主要负责人。</li>
+						<li>蓝桥杯全国软件和信息技术专业人才大赛 Python A 组，省级一等奖。</li>
+						<li>全国大学生数学竞赛非数学类 A 组，省级三等奖。</li>
+						<li>西南大学本科生二等奖学金，西南大学三好学生。</li>
+					</ul>
+				</section>
+
+				<section class="space-y-3 border-t border-black/10 pt-5 dark:border-white/10">
+					<h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-50">技能</h2>
+					<ul class="list-disc space-y-2 pl-5">
+						<li>编程与写作：Python、C / C++、Markdown、LaTeX、Matlab。</li>
+						<li>AI 与工程实践：PyTorch、CUDA 基础、RAG、MCP、LangChain、FastMCP、FastAPI。</li>
+						<li>开发工具与环境：SQL、Docker、Git、Linux 配置与调试。</li>
+					</ul>
+				</section>
+
+				<section class="space-y-3 border-t border-black/10 pt-5 dark:border-white/10">
+					<h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-50">兴趣爱好</h2>
+					<ul class="list-disc space-y-2 pl-5">
+						<li>游戏：LOL、APEX、单机游戏等。</li>
+						<li>电竞比赛：LPL、VCT CN、APEX 亚太南、OWCS CN、Dota TI、CS:GO Major，希望都能看到 CN 队夺冠。</li>
+						<li>动漫：刀剑神域、加速世界、凡人修仙传、无职转生、我独自升级...</li>
+						<li>足球比赛：中国队世预赛、洲际赛、大型国际赛事等。</li>
+						<li>音乐：周杰伦、邓紫棋、林俊杰、陶喆、方大同、萧亚轩...</li>
+						<li>电影：《流浪地球 2》等。</li>
+						<li>小说：《龙族》等。</li>
+					</ul>
+				</section>
+
+				<section class="space-y-3 border-t border-black/10 pt-5 dark:border-white/10">
+					<h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-50">更多了解我的方式</h2>
+					<p>
+						你可以通过下面这些入口继续了解我，也可以直接通过邮件联系。
+					</p>
 					<div class="flex flex-wrap gap-3 text-sm">
 						<a class="link-underline" href="https://github.com/dcygtheshy" target="_blank" rel="noopener">GitHub</a>
+						<a class="link-underline" href="https://space.bilibili.com/116393440?spm_id_from=333.1007.0.0" target="_blank" rel="noopener">B站：蛋蛋鼠王</a>
 						<a class="link-underline" href="mailto:1633960501@qq.com">Email</a>
+						<a class="link-underline" href="/posts/projects-and-resume/">项目与履历</a>
+						<a class="link-underline" href="/research/">研究地图</a>
+						<a class="link-underline" href="/archive/">文章归档</a>
 						<a class="link-underline" href="/rss.xml">RSS</a>
 					</div>
-				</div>
+				</section>
 			</div>
 
-			<div id="about-en" data-about-panel="en" class="space-y-4 hidden">
-				<p>Hi, I am Zhu Hao. I am finishing my undergraduate degree and will start graduate school at Beijing Electronic Science and Technology Institute.</p>
-				<p>This site is where I keep a clear record of things that matter to me: my grad-school application journey, small projects, notes, and the bits of life around them. I try to keep the writing honest and practical.</p>
-				<div class="grid gap-3 md:grid-cols-2">
-					<div class="rounded-xl border border-black/10 p-4 dark:border-white/10">
-						<div class="text-sm font-semibold text-[var(--primary)]">Now</div>
-						<p class="mt-2 text-neutral-600 dark:text-neutral-300">Wrapping up the bachelor's chapter and preparing for the next one.</p>
+			<div id="about-en" data-about-panel="en" class="space-y-6 hidden leading-7 text-neutral-700 dark:text-neutral-300">
+				<section class="space-y-3">
+					<h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-50">Name and Profile</h2>
+					<p>
+						Hi, I am Dandanshu.
+					</p>
+				</section>
+
+				<section class="space-y-3 border-t border-black/10 pt-5 dark:border-white/10">
+					<h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-50">Education</h2>
+					<div class="space-y-4">
+						{educationEn.map((item) => (
+							<article class="grid gap-4 rounded-lg border border-black/10 bg-black/[0.015] p-4 dark:border-white/10 dark:bg-white/[0.03] md:grid-cols-[7rem_1fr] md:items-center">
+								<div class="flex aspect-square w-24 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-dashed border-black/15 bg-white/70 text-center text-sm font-semibold text-neutral-400 dark:border-white/15 dark:bg-white/10 dark:text-neutral-500 md:w-full">
+									{item.logo ? (
+										<img src={item.logo} alt={item.logoAlt} class="h-full w-full object-contain p-3" />
+									) : (
+										<span>Logo TBD</span>
+									)}
+								</div>
+								<div class="min-w-0 space-y-3">
+									<div>
+										<h3 class="text-xl font-bold text-neutral-900 dark:text-neutral-50">{item.school}</h3>
+										<p class="text-sm font-medium text-[var(--primary)]">{item.schoolMeta}</p>
+									</div>
+									<dl class="grid gap-2 text-sm sm:grid-cols-2">
+										{item.details.map(([label, value]) => (
+											<div class="min-w-0 rounded-md bg-white/70 px-3 py-2 dark:bg-white/[0.06]">
+												<dt class="text-xs font-semibold text-neutral-500 dark:text-neutral-400">{label}</dt>
+												<dd class="mt-1 break-words text-neutral-800 dark:text-neutral-200">{value}</dd>
+											</div>
+										))}
+									</dl>
+								</div>
+							</article>
+						))}
 					</div>
-					<div class="rounded-xl border border-black/10 p-4 dark:border-white/10">
-						<div class="text-sm font-semibold text-[var(--primary)]">Interests</div>
-						<p class="mt-2 text-neutral-600 dark:text-neutral-300">AI systems, content authenticity, MCP/RAG, and engineering workflows.</p>
+				</section>
+
+				<section class="space-y-3 border-t border-black/10 pt-5 dark:border-white/10">
+					<h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-50">Research Interests</h2>
+					<ul class="list-disc space-y-2 pl-5">
+						<li>AI model watermarking: model copyright protection, source tracing, and watermark robustness.</li>
+						<li>Active authorization control for models: capability invocation, permission management, and controllable usage mechanisms.</li>
+						<li>AI-generated content labeling: AIGC labeling, content authenticity, and governance tools for generative AI.</li>
+					</ul>
+				</section>
+
+				<section class="space-y-3 border-t border-black/10 pt-5 dark:border-white/10">
+					<h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-50">Honors and Awards</h2>
+					<ul class="list-disc space-y-2 pl-5">
+						<li>National second prize, Chinese Collegiate Computing Competition.</li>
+						<li>Provincial first prize, Contemporary Undergraduate Mathematical Contest in Modeling.</li>
+						<li>Provincial first prize, Lanqiao Cup Python A Group.</li>
+						<li>Provincial third prize, Chinese Mathematics Competition.</li>
+						<li>Southwest University undergraduate scholarship and Merit Student honors.</li>
+					</ul>
+				</section>
+
+				<section class="space-y-3 border-t border-black/10 pt-5 dark:border-white/10">
+					<h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-50">Skills</h2>
+					<ul class="list-disc space-y-2 pl-5">
+						<li>Programming and writing: Python, C / C++, Markdown, LaTeX, Matlab.</li>
+						<li>AI and engineering: PyTorch, CUDA basics, RAG, MCP, LangChain, FastMCP, FastAPI.</li>
+						<li>Tools and environments: SQL, Docker, Git, Linux configuration and debugging.</li>
+					</ul>
+				</section>
+
+				<section class="space-y-3 border-t border-black/10 pt-5 dark:border-white/10">
+					<h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-50">Interests</h2>
+					<ul class="list-disc space-y-2 pl-5">
+						<li>Games: League of Legends, Apex Legends, single-player games, and more.</li>
+						<li>Esports: LPL, VCT CN, Apex Legends APAC South, OWCS CN, Dota TI, and CS:GO Major. I hope to see more CN teams win championships.</li>
+						<li>Anime: Sword Art Online, Accel World, A Record of a Mortal's Journey to Immortality, Mushoku Tensei, Solo Leveling, and more.</li>
+						<li>Football: China's World Cup qualifiers, continental tournaments, and major international events.</li>
+						<li>Music: Jay Chou, G.E.M., JJ Lin, David Tao, Khalil Fong, Elva Hsiao, and more.</li>
+						<li>Movies: The Wandering Earth 2 and others.</li>
+						<li>Novels: Dragon Raja and others.</li>
+					</ul>
+				</section>
+
+				<section class="space-y-3 border-t border-black/10 pt-5 dark:border-white/10">
+					<h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-50">More Ways to Know Me</h2>
+					<p>You can follow these links to know more about me, or contact me by email.</p>
+					<div class="flex flex-wrap gap-3 text-sm">
+						<a class="link-underline" href="https://github.com/dcygtheshy" target="_blank" rel="noopener">GitHub</a>
+						<a class="link-underline" href="https://space.bilibili.com/116393440?spm_id_from=333.1007.0.0" target="_blank" rel="noopener">Bilibili</a>
+						<a class="link-underline" href="mailto:1633960501@qq.com">Email</a>
+						<a class="link-underline" href="/posts/projects-and-resume/">Projects and Resume</a>
+						<a class="link-underline" href="/research/">Research Map</a>
+						<a class="link-underline" href="/archive/">Archive</a>
+						<a class="link-underline" href="/rss.xml">RSS</a>
 					</div>
-				</div>
+				</section>
 			</div>
 		</div>
 	</section>

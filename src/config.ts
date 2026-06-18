@@ -8,7 +8,7 @@ import type {
 import { LinkPreset } from "./types/config";
 
 export const siteConfig: SiteConfig = {
-	title: "朱昊",
+	title: "蛋蛋鼠",
 	subtitle: "写保研、项目、读书和研究生生活的记录。",
 	lang: "zh_CN", // Language code, e.g. 'en', 'zh_CN', 'ja', etc.
 	themeColor: {
@@ -17,8 +17,22 @@ export const siteConfig: SiteConfig = {
 	},
 	banner: {
 		enable: true,
-		src: "assets/images/demo-banner.png", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
-		srcList: [], // Put public paths like '/images/banners/a.jpg' here to randomize the banner on refresh.
+		src: "assets/images/banner-1.jpg", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
+		srcList: [
+			"assets/images/banner-1.jpg",
+			"assets/images/banner-4.jpg",
+			"assets/images/banner-5.jpg",
+			"assets/images/banner-7.jpg",
+			"assets/images/banner-8.png",
+			"assets/images/banner-9.png",
+			"assets/images/banner-10.png",
+			"assets/images/banner-11.png",
+			"assets/images/banner-12.png",
+			"assets/images/banner-14.png",
+			"assets/images/banner-15.png",
+			"assets/images/banner-16.png",
+			"assets/images/banner-17.png"
+		], // Put public paths like '/images/banners/a.jpg' here to randomize the banner on refresh.
 		position: "center", // Equivalent to object-position, only supports 'top', 'center', 'bottom'. 'center' by default
 		credit: {
 			enable: false, // Display the credit text of the banner image
@@ -58,9 +72,9 @@ export const navBarConfig: NavBarConfig = {
 };
 
 export const profileConfig: ProfileConfig = {
-	avatar: "assets/images/demo-avatar.png", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
-	name: "朱昊",
-	bio: "西南大学软件工程本科，毕业在即，现为北京电子科技学院研零。",
+	avatar: "assets/images/avatar.png", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
+	name: "蛋蛋鼠",
+	bio: "迎着阳光，盛大逃亡",
 	links: [
 		{
 			name: "GitHub",

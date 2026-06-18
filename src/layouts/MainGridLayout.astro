@@ -4,6 +4,7 @@ import Footer from "@components/Footer.astro";
 import Navbar from "@components/Navbar.astro";
 import SideBar from "@components/widget/SideBar.astro";
 import type { MarkdownHeading } from "astro";
+import { getImage } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import ImageWrapper from "../components/misc/ImageWrapper.astro";
 import TOC from "../components/widget/TOC.astro";
@@ -36,7 +37,30 @@ const hasBannerCredit =
 	siteConfig.banner.enable && siteConfig.banner.credit.enable;
 const hasBannerLink = !!siteConfig.banner.credit.url;
 const bannerSrcList = siteConfig.banner.srcList ?? [];
-const useRandomBanner = bannerSrcList.length > 0;
+const bannerImageFiles = import.meta.glob<ImageMetadata>("../assets/images/**/*", {
+	import: "default",
+});
+const resolvedBannerSrcList = await Promise.all(
+	bannerSrcList.map(async (src) => {
+		if (
+			src.startsWith("/") ||
+			src.startsWith("http") ||
+			src.startsWith("https") ||
+			src.startsWith("data:")
+		) {
+			return src;
+		}
+
+		const normalizedPath = `../${src}`.replace(/\\/g, "/");
+		const file = bannerImageFiles[normalizedPath];
+		if (!file) return src;
+
+		const image = typeof file === "function" ? await file() : file;
+		const optimizedImage = await getImage({ src: image });
+		return optimizedImage.src;
+	}),
+);
+const useRandomBanner = resolvedBannerSrcList.length > 0;
 
 const mainPanelTop = siteConfig.banner.enable
 	? `calc(${BANNER_HEIGHT}vh - ${MAIN_PANEL_OVERLAPS_BANNER_HEIGHT}rem)`
@@ -59,7 +83,7 @@ const mainPanelTop = siteConfig.banner.enable
                   src={siteConfig.banner.src} position={siteConfig.banner.position}
     >
     </ImageWrapper>
-    {useRandomBanner && <div id="banner-random-srcs" hidden data-srcs={JSON.stringify(bannerSrcList)}></div>}
+    {useRandomBanner && <div id="banner-random-srcs" hidden data-srcs={JSON.stringify(resolvedBannerSrcList)}></div>}
 </div>}
 
 <!-- Main content -->
