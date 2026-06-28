@@ -1,6 +1,6 @@
 # dcygtheshy.github.io
 
-A bilingual personal blog for 朱昊, built with [Astro](https://astro.build/) and customized from [Fuwari](https://github.com/saicaca/fuwari).
+A bilingual personal blog for 蛋蛋鼠, built with [Astro](https://astro.build/) and customized from [Fuwari](https://github.com/saicaca/fuwari).
 
 ## Local Development
 
